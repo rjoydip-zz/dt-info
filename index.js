@@ -1,41 +1,43 @@
-'use strict';
-const emoji = require('node-emoji');
+'use strict'
 
-class ArrayEmojify {
-    constructor() { }
+const {pick} = require('lodash')
 
-    isString(val) {
-        return typeof val === 'string';
+class DateTimeInfo {
+    constructor() {
+        this._date = new Date()
+        this._day = this._date.getDay()
     }
 
-    emojify(data, cb) {
-        const payload = {
-            error: null,
-            value: []
-        };
+    isKeyValid(key) {
+        return (key && key !== '') && typeof key !== 'function'
+    }
 
-        if (Array.isArray(data)) {
-            payload.value = data.map(
-                item => this.isString(item) && emoji.hasEmoji(item) ?
-                    (emoji.emojify(item).toString() !== item ?
-                        emoji.emojify(item) : emoji.get(item)) + ' ' : item
-            );
-        } else {
-            if (this.isString(data) && data !== '') {
-                payload.value = emoji.emojify(data).toString() !== data ?
-                    emoji.emojify(data) : emoji.get(data)
-            } else {
-                if(data === '') {
-                    payload.error = 'String is empty';
-                } else {
-                    payload.error = 'Data is not array type';
-                }
-            }
+    info(key, cb) {
+        const promise = Promise
+        const _info = {
+            day: this._day, date: this._date.getDate(),
+            month: (this._date.getMonth() + 1), fullYear: this._date.getFullYear(),
+            hours: this._date.getHours(), minutes: this._date.getMinutes(),
+            seconds: this._date.getSeconds(), milliseconds: this._date.getMilliseconds(),
+            week: ((this._day + 6) % 6), time: this._date.getTime(),
+            timezoneOffset: this._date.getTimezoneOffset(), UTCFullYear: this._date.getUTCFullYear(),
+            UTCMonth: this._date.getUTCMonth(), UTCDate: this._date.getUTCDate(),
+            UTCDay: this._date.getUTCDay(), UTCHours: this._date.getUTCHours(),
+            UTCMinutes: this._date.getUTCMinutes(), UTCSeconds: this._date.getUTCSeconds(),
+            UTCMilliseconds: this._date.getUTCMilliseconds()
         }
 
-        if (cb) return cb(payload);
-        else return payload;
+        if (typeof key === 'function') {
+            cb = key
+        }
+
+        if (key && this.isKeyValid(key)) {
+            const data = pick(_info, key) || null
+            return cb ? cb(null, data) : promise.resolve(data)
+        }
+
+        return cb ? cb(null, _info) : promise.resolve(_info)
     }
 }
 
-module.exports = Object.assign(new ArrayEmojify(), { ArrayEmojify });
+module.exports = Object.assign(new DateTimeInfo(), {DateTimeInfo})

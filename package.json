@@ -1,22 +1,35 @@
 {
-  "name": "array-emojify",
-  "version": "1.0.1",
-  "description": "Emojify array values",
+  "name": "datetimeinfo",
+  "version": "1.0.0",
+  "description": "Get date and time info",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest --coverage test.js"
+    "test": "./node_modules/.bin/jest --coverage test.js",
+    "example": "node example",
+    "lint": "xo"
   },
   "keywords": [
-    "emojify",
-    "array-emojify"
+    "time",
+    "date",
+    "time-info",
+    "date-info",
+    "date-time-info",
+    "datetimeinfo"
   ],
   "author": "Joydip Roy (rjoydip)",
   "license": "MIT",
   "dependencies": {
-    "node-emoji": "^1.8.1"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "jest": "^23.1.0"
+    "jest": "^23.1.0",
+    "xo": "^0.21.1"
+  },
+  "xo": {
+    "space": 4,
+    "semicolon": false,
+    "comma-dangle": true,
+    "ignores": "test.js"
   },
   "jest": {
     "transform": {}

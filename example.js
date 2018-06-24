@@ -1,33 +1,29 @@
-const { ArrayEmojify } = require('./');
+const {DateTimeInfo} = require('.') // Const dtInfo = require('.')
 
-// Example 1: ArrayEmojify with return
+const dtInfo = new DateTimeInfo()
 
-const ArrayEmojifyEx1 = new ArrayEmojify({
-    enableOnKey: true,
-    enableOnValue: true,
-});
-const arrayEmojifyEx1 = ArrayEmojifyEx1.emojify(['100', 'heart', ':+1:']);
+// Example 1
+dtInfo.info(['day', 'minutes']).then(result => {
+    console.log('result 1', result)
+}).catch(error => {
+    console.log('error 1', error)
+})
 
-console.log(arrayEmojifyEx1);
+// Example 2
+dtInfo.info(['day', 'minutes'], (error, result) => {
+    console.log('result 2', result)
+    console.log('error 2', error)
+})
 
-// Example 2: ArrayEmojify with callback
+// Example 3
+dtInfo.info().then(result => {
+    console.log('result 3', result)
+}).catch(error => {
+    console.log('error 3', error)
+})
 
-const ArrayEmojifyEx2 = new ArrayEmojify();
-ArrayEmojifyEx2.emojify(['100', 'coffee', 'heart', ':+1:'], (emojify) => {
-    if (emojify.error) {
-        console.log(emojify.error);
-    } else {
-        console.log(emojify.value);
-    }
-});
-
-// Example 3: ArrayEmojify with callback and valid string
-
-const ArrayEmojifyEx3 = new ArrayEmojify();
-ArrayEmojifyEx3.emojify(':coffee:', (emojify) => { // ':coffee:' or 'coffee'
-    if (emojify.error) {
-        console.log(emojify.error);
-    } else {
-        console.log(emojify.value);
-    }
-});
+// Example 4
+dtInfo.info((error, result) => {
+    console.log('result 4', result)
+    console.log('error 4', error)
+})
