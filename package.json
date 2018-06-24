@@ -7,8 +7,8 @@
     "test": "./node_modules/.bin/jest --coverage test.js",
     "example": "node example",
     "lint": "xo",
-    "pre-push": "npm run lint && npm test",
-    "pre-commit": "npm run lint"
+    "prepush": "npm run lint && npm test",
+    "precommit": "npm run lint"
   },
   "keywords": [
     "time",
@@ -39,8 +39,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run pre-push",
-      "pre-commit": "npm run pre-commit"
+      "pre-push": "npm run prepush",
+      "pre-commit": "npm run precommit"
     }
   }
 }
