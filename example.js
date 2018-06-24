@@ -1,6 +1,6 @@
-const {DateTimeInfo} = require('.') // Const dtInfo = require('.')
+const {DTInfo} = require('.')
 
-const dtInfo = new DateTimeInfo()
+const dtInfo = new DTInfo()
 
 // Example 1
 dtInfo.info(['day', 'minutes']).then(result => {

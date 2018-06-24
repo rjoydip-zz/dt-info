@@ -2,7 +2,7 @@
 
 const {pick} = require('lodash')
 
-class DateTimeInfo {
+class DTInfo {
     constructor() {
         this._date = new Date()
         this._day = this._date.getDay()
@@ -40,4 +40,4 @@ class DateTimeInfo {
     }
 }
 
-module.exports = Object.assign(new DateTimeInfo(), {DateTimeInfo})
+module.exports = Object.assign(new DTInfo(), {DTInfo})

@@ -1,12 +1,14 @@
 {
-  "name": "datetimeinfo",
+  "name": "dt-info",
   "version": "1.0.0",
   "description": "Get date and time info",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/jest --coverage test.js",
     "example": "node example",
-    "lint": "xo"
+    "lint": "xo",
+    "pre-push": "npm run lint && npm test",
+    "pre-commit": "npm run lint"
   },
   "keywords": [
     "time",
@@ -14,7 +16,7 @@
     "time-info",
     "date-info",
     "date-time-info",
-    "datetimeinfo"
+    "dt-info"
   ],
   "author": "Joydip Roy (rjoydip)",
   "license": "MIT",
@@ -22,6 +24,7 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
+    "husky": "^0.14.3",
     "jest": "^23.1.0",
     "xo": "^0.21.1"
   },
@@ -33,5 +36,11 @@
   },
   "jest": {
     "transform": {}
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run pre-push",
+      "pre-commit": "npm run pre-commit"
+    }
   }
 }

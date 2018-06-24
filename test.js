@@ -1,4 +1,4 @@
-const {DateTimeInfo} = require('.') // Const dtInfo = require('.')
+const {DateTimeInfo} = require('.')
 
 const dtInfo = new DateTimeInfo()
 
