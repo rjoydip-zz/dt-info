@@ -1,6 +1,6 @@
 {
   "name": "dt-info",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get date and time info",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,11 @@
     "date-time-info",
     "dt-info"
   ],
-  "author": "Joydip Roy (rjoydip)",
+  "repository": "rjoydip/dt-info",
+  "author": {
+    "name": "Joydip Roy",
+    "email": "joydipand@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.10"
